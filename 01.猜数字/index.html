@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <title>猜数字!</title>
+  </head>
+  <body>
+    <header>
+      <h1>猜 数 字 !</h1>
+      <p class="between">( 请输入 1 ~ 20 )</p>
+      <button class="btn again">再来一次 !</button>
+      <div class="number">?</div>
+    </header>
+    <main>
+      <section class="left">
+        <div class="number-box">
+          <input type="number" class="guess" min="1" max="20" placeholder="请输入"/>
+          <div class="buttons">
+            <button class="plus"> &#8593;</button>
+            <button class="minus"> &#8595;</button>
+          </div>
+        </div>
+        <button class="btn check">检查 !</button>
+      </section>
+      <section class="right">
+        <p class="message">⛔ 请输入数字 !</p>
+        <p class="label-score">💯 分数: <span class="score">20</span></p>
+        <p class="label-highscore">
+          🥇 高分: <span class="highscore">0</span>
+        </p>
+      </section>
+      <div class="modal none">
+        <div class="text">请输入 1 ~ 20 的数字 !
+        <div class="close">✖</div>
+        </div>
+      </div>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
