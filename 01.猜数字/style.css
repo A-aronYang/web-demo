@@ -169,30 +169,31 @@ input[type=number]::-webkit-outer-spin-button {
   margin-bottom: 2rem;
 }
 
-.modal {
+.mask {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(34, 34, 34, 0.3);
+  background-color: rgb(17, 17, 17, .5);
+  transition: all .2s;
 }
 
-.modal .text{
+.modal{
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -75%);
   width: 30rem;
   height: 18rem;
-  background-color: rgba(34, 34, 34, 0.9);
+  background-color: rgb(17, 17, 17, .5);
   font-size: 2rem;
   border: 5px double #eee;
   border-radius: .5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all .3s;
+  transition: all .2s;
 }
 .modal .close{
   position: absolute;

@@ -21,6 +21,8 @@ const messageEl = document.querySelector(".message")
 const modelEl = document.querySelector(".modal")
 // 获取关闭按钮
 const closeEl = document.querySelector(".close")
+// 获取蒙版
+const maskEl = document.querySelector(".mask")
 
 // 定义分数
 let score = 20
@@ -38,12 +40,14 @@ plus.addEventListener("click", function () {
   if (guessEl.value == 20 || gameOver === true) return
   inputValue++
   guessEl.value = inputValue
+  messageEl.textContent = '开始猜数字...'
 })
 // 点击箭头改变数字
 minus.addEventListener("click", function () {
   if (guessEl.value == 1 || gameOver === true) return
   inputValue--
   guessEl.value = inputValue
+  messageEl.textContent = '开始猜数字...'
 })
 
 // 输入框没有内容显示提示文字
@@ -54,13 +58,13 @@ guessEl.addEventListener('input', function () {
     messageEl.textContent = '⛔ 请输入数字 !'
   } else {
     messageEl.textContent = '开始猜数字...'
-  } 
+  }
 })
 
 // 猜对了改变背景为绿色
 function checkNumber(number) {
   if (gameOver === true) return
-  
+
   if (number == secretNumber) {
     scoreEl.textContent = score
     messageEl.textContent = '🎉 猜对啦!'
@@ -76,7 +80,7 @@ function checkNumber(number) {
     messageEl.textContent = '📈 猜高了!'
   } else if (number < secretNumber) {
     messageEl.textContent = '📉 猜低了!'
-  } 
+  }
 
   if (score === 0) {
     messageEl.textContent = '💥 你失败了!'
@@ -97,12 +101,11 @@ function changeColor(color) {
 // 判断是否是1-20的数字
 function isRightNumber() {
   if (guessEl.value <= 0 || guessEl.value > 20) {
-    modelEl.classList.remove("none")
-    mask = true
+    openModal()
     guessEl.value = ""
     messageEl.textContent = '⛔ 请输入数字 !'
     return
-  } 
+  }
   checkNumber(inputValue)
 }
 
@@ -115,8 +118,7 @@ checkEl.addEventListener("click", function () {
 document.addEventListener("keyup", function (e) {
   if (e.code === 'Enter') {
     if (mask === true) {
-      modelEl.classList.add("none")
-      mask = false
+      closeModal()
     } else {
       isRightNumber()
     }
@@ -135,11 +137,19 @@ againEl.addEventListener("click", function () {
   guessEl.disabled = false
 })
 
+// 打开模态框
+function openModal() {
+  modelEl.classList.remove("none")
+  maskEl.classList.remove("none")
+  mask = true
+}
 
 // 关闭模态框函数
 function closeModal() {
   modelEl.classList.add("none")
+  maskEl.classList.add("none")
   mask = false
 }
 // 关闭模态框
 closeEl.addEventListener("click", closeModal)
+maskEl.addEventListener("click", closeModal)
