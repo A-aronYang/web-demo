@@ -10,6 +10,8 @@ const checkEl = document.querySelector(".check")
 const scoreEl = document.querySelector(".score")
 // 获取高分
 const highscoreEl = document.querySelector(".highscore")
+// 获取问号
+const numberEl = document.querySelector(".number") 
 // 获取再来一次按钮
 const againEl = document.querySelector(".again")
 // 获取箭头
@@ -69,6 +71,7 @@ function checkNumber(number) {
     scoreEl.textContent = score
     messageEl.textContent = '🎉 猜对啦!'
     changeColor('#60b347')
+    numberEl.textContent = inputValue
     if (highscore <= score) {
       highscore = score
     }
@@ -129,6 +132,7 @@ document.addEventListener("keyup", function (e) {
 // 再来一次
 againEl.addEventListener("click", function () {
   changeColor('#222222')
+  numberEl.textContent = "?"
   messageEl.textContent = '⛔ 请输入数字 !'
   scoreEl.textContent = score = 20
   guessEl.value = inputValue = ""
