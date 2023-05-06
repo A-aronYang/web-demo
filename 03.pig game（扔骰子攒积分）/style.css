@@ -165,3 +165,8 @@ main {
   font-weight: 700;
   color: #c7365f;
 }
+
+/* 添加一个隐藏类隐藏骰子 */
+.hidden {
+  display: none;
+}
